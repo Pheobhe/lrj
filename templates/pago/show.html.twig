@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block headerBreadcrumb %}
+	<li class="breadcrumb-item">
+		<a href='{{ path('index') }}'>
+			<i class="feather icon-home"></i>
+		</a>
+	</li>
+	<li class="breadcrumb-item">
+		<a>Pagos</a>
+	</li>
+{% endblock headerBreadcrumb %}
+
+{% block body %}
+	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+		<a class="mb-2 btn btn-outline-primary" style="float: right" href="{{ path('app_lugar_index') }}">Volver
+		</a>
+	</div>
+	<div class="card">
+		<div class="card-body">
+			<h5>Ver Pago</h5>
+			<br/>
+			<table class="table">
+				<tbody>
+					<tr>
+						<th>Identificador</th>
+						<td>{{ pago.id }}</td>
+					</tr>
+					<tr>
+						<th>Nombre</th>
+						<td>{{ pago.nombre }}</td>
+					</tr>
+					<tr>
+						<th>Fecha de Creación</th>
+						<td>{{ pago.createdAt ? pago.createdAt|date('d-m-Y') : '' }}</td>
+					</tr>
+				</tbody>
+			</table>
+			<br/>
+			{# {% if respuesta.user == app.user or is_granted('ROLE_SUPER_ADMIN') %} #}
+			<a class="btn btn-outline-primary" href="{{ path('app_lugar_edit', {'id': pago.id}) }}">Editar</a>
+
+			{% if is_granted('ROLE_SUPER_ADMIN') %}
+				<a style="float: right">
+					{{ include('pago/_delete_form.html.twig') }}
+				</a>
+			{% endif %}
+
+			{# {% endif %} #}
+
+		</div>
+	</div>
+
+
+{% endblock %}

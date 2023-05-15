@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('app_actividad_delete', {'id': actividad.id}) }}" onsubmit="return confirm('Realmente quiere {{ (actividad.getRemoved == false)? 'Eliminar':'Reintegrar' }} este item?');">
+	<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ actividad.id) }}">
+	<button class="btn btn-outline-{{ (actividad.getRemoved == false)? 'danger':'primary' }}">{{ (actividad.getRemoved == false)? 'Eliminar':'Reintegrar' }}</button>
+</form>

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}
+{% endblock %}
+
+
+{% block headerBreadcrumb %}
+	<li class="breadcrumb-item">
+		<a href='{{ path('index') }}'>
+			<i class="feather icon-home"></i>
+		</a>
+	</li>
+	<li class="breadcrumb-item">
+		<a>Pagos</a>
+	</li>
+{% endblock headerBreadcrumb %}
+
+{% block body %}
+	<a href="{{ path('app_pago_new') }}" class="btn btn-outline-primary ">Crear Nuevo</a>
+	<div class="card">
+		<div class="card-body">
+			<h5>
+				<i class="feather icon-package"></i>
+				Listado de Pagos</h5>
+			<hr/>
+			<table class="table">
+				<div class="dt-responsive table-responsive">
+					<table class="table nowrap">
+						{{ hello_bootstrap_table_render(table) }}
+					</table>
+				</div>
+			</table>
+
+		{% endblock %}
+
+		{% block stylesheets %}
+			{{ parent() }}
+			{{ hello_bootstrap_table_css() }}
+		{% endblock %}
+		{% block javascripts %}
+			{{ parent() }}
+			{{ hello_bootstrap_table_js() }}
+		{% endblock %}

@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('app_persona_delete', {'id': persona.id}) }}" onsubmit="return confirm('Realmente quiere {{ (persona.getRemoved == false)? 'Eliminar':'Reintegrar' }} este item?');">
+	<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ persona.id) }}">
+	<button class="btn btn-outline-danger btn-sm " {{ (persona.getRemoved == false)? 'danger':'primary' }}>{{ (persona.getRemoved == false)? 'Eliminar':'Reintegrar' }}</button>
+</form>

@@ -1,0 +1,16 @@
+<li class="nav-item">
+    <a href="{{path('index')}}" class="nav-link ">
+        <span class="pcoded-micon">
+            <i class="feather icon-home"></i>
+        </span>
+        <span class="pcoded-mtext">Inicio</span>
+    </a>
+</li>
+{% if is_granted('ROLE_SUPER_ADMIN') %}
+{{ include('menu/menu_admin.html.twig')}}
+{% endif %}
+{% if is_granted('ROLE_USER') %}
+{{ include('menu/menu_user.html.twig')}}
+{% endif %}
+
+

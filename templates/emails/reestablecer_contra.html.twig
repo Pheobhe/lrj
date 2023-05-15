@@ -1,0 +1,15 @@
+{% extends 'emails/base_email.html.twig' %}
+
+{% block body %}
+
+	<h2 style="font-family: 'DIN-Regular', 'sans-serif';">Reestablecer la contraseña</h2>
+	<p>Puede reestablecer la contraseña haciendo click en el siguiente enlace:</p> 
+	<a href="{{url}}">Volver a establecer su contraseña</a>
+	<p>Su usuario es: {{user}}</p>
+	<p>Si no ha solicitado un restablecimiento de contraseña,
+		puede ignorar este mensaje</p>
+{% endblock %}
+
+{% block footer %}
+	
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base-login.html.twig' %}
+
+
+{% block body %}
+
+<div class="auth-wrapper">
+    <div class="auth-content">
+        <div class="card">
+            <div class="row align-items-center text-center">
+                <div class="col-md-12">
+                    <div class="card-body">
+                        <form class="md-float-material" action="{{ path('login') }}" method="post">
+                            <img src="{{ asset('images/lrj1.png') }}" class="img-fluid mb-4">
+                            {% if error %}
+                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}
+                            </div>
+                            {% endif %}
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="feather icon-user-x"></i></span>
+                                </div>
+                                <input type="string" value="{{ last_username }}" name="_username" id="inputDni"
+                                    class="form-control" placeholder="Nombre de Usuario" required>
+                            </div>
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="feather icon-lock"></i></span>
+                                </div>
+                                <input type="password" name="_password" id="inputPassword" class="form-control"
+                                    placeholder="Contraseña" required>
+                            </div>
+                            <br>
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                            {# <br><a href="{{ path('restore_passwd') }}">Olvidé mi contraseña</a><br> #}
+                            <button class="btn btn-primary btn-block mb-4">Entrar</button>
+                            <p class="mb-2">Salud & Estetica</p>
+                            <p class="mb-2"><b>La Receta Justa</b></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

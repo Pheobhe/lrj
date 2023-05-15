@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block headerBreadcrumb %}
+	<li class="breadcrumb-item">
+		<a href='{{ path('index') }}'>
+			<i class="feather icon-home"></i>
+		</a>
+	</li>
+	<li class="breadcrumb-item">
+		<a>Actividades</a>
+	</li>
+{% endblock headerBreadcrumb %}
+
+{% block body %}
+	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+		<a class="mb-2 btn btn-outline-primary" style="float: right" href="{{ path('app_actividad_index') }}">Volver</a>
+	</div>
+	<div class="card">
+		<div class="card-body">
+			<h5>Ver Actividad</h5>
+			<br/>
+
+			<table class="table">
+				<tbody>
+					<tr>
+						<th>Identificador</th>
+						<td>{{ actividad.id }}</td>
+					</tr>
+					<tr>
+						<th>Nombre</th>
+						<td>{{ actividad.nombre }}</td>
+					</tr>
+					<tr></tr>
+					<tr>
+						<th>Creado en</th>
+						<td>{{ actividad.createdAt ? actividad.createdAt|date('d-m-Y') : '' }}</td>
+					</tr>
+
+				</tbody>
+			</table>
+			<br/>
+			{# {% if respuesta.user == app.user or is_granted('ROLE_SUPER_ADMIN') %} #}
+			<a class="btn btn-outline-primary" href="{{ path('app_actividad_edit', {'id': actividad.id}) }}">Editar</a>
+
+			{% if is_granted('ROLE_SUPER_ADMIN') %}
+				<a style="float: right">
+					{{ include('actividad/_delete_form.html.twig') }}
+				</a>
+			{% endif %}
+			{# {% endif %} #}
+
+		</div>
+	</div>
+
+{% endblock %}

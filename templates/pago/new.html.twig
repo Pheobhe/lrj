@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block headerTitle %}
+Crear Pago
+{% endblock headerTitle %}
+
+{% block headerBreadcrumb %}
+
+<li class="breadcrumb-item"><a href='{{ path('index') }}'><i class="feather icon-home"></i></a></li>
+<li class="breadcrumb-item"><a>Pagos</a></li>
+{% endblock headerBreadcrumb %}
+
+{% block body %}
+<div class="d-grid gap-1 d-md-flex justify-content-md-end">
+		<a class="mb-2 btn btn-outline-primary" style="float: right" href="{{ path('app_persona_index') }}">Volver</a>
+	</div>
+    <div class="card">
+        <div class="card-body">
+            <h5>Crear nuevo pago</h5>
+            <hr />
+            {{ include('pago/_form.html.twig') }}
+        </div>
+    </div>
+           
+{% endblock %}
+    
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
+    </script>
+{% endblock %}
+
+

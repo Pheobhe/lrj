@@ -1,0 +1,159 @@
+/* Subtitulos Fechas Personas y Agentes Obligados */
+.subtitulo-fechas {
+  font-size: 18px;
+  font-weight: bold;
+}
+.subtitulo {
+  font-size: 24px;
+  font-weight: bold;
+}
+.subtitulo-agentes {
+  margin-bottom: 3%;
+}
+
+/* Texto Fechas */
+.texto-fechas {
+  padding-left: 8%;
+}
+
+/* Bloques Fechas y Personas */
+.bloque-mitad {
+  padding: 2% 2%;
+  border-radius: 10px;
+}
+/* Bloque Fechas de Actualizacion */
+.fechas {
+  background-color: #f3f3f3; /* Gris de fondo */
+  max-height: 200px;
+}
+
+/* Filtro Personas */
+.barra-filtro {
+  border: none;
+  outline: none;
+  background-color: #e6e4e4; /* Gris de fondo */
+  width: 100%;
+  text-align: left;
+  font-weight: bold;
+}
+#bloqueActividades .dropdown-toggle::after {
+  margin-left: 85%;
+}
+.bloque-filtro {
+  background-color: #f3f3f3; /* Gris de fondo */
+}
+.dataTables_filter {
+  float: left !important;
+  text-align: left !important;
+}
+.dataTables_filter input {
+  margin-left: 0 !important;
+}
+
+/* Tabla Personas y Agentes Obligados */
+.table td, .table th {
+ 
+  font-weight: 100;
+  vertical-align: top;
+  border-top: 0;
+}
+#tableActividades .table-header th {
+  font-weight: bold !important;
+  min-width: 55px;
+}
+#tableAgentes .table-header th {
+  font-weight: bold !important;
+}
+#tableAgentes {
+  width: 100% !important;
+}
+#tablaAgentes {
+  padding: 0;
+}
+
+/* Botones  */
+.btn-descargar {
+  text-align: center;
+  margin-left: 2%;
+  background-color: #929292;
+  border-color: #929292;
+}
+/* Botones paginación */
+.page-link {
+  border:0;
+  color: black;
+  font-weight: bold;
+}
+.page-link:hover {
+  color: #929292;
+  background-color: white;
+}
+.pagination {
+  margin-top: -6px;
+}
+.dataTables_info {
+  font-size: 0.95rem;
+  text-align: right;
+}
+.paginate_button {
+  width: 1.5em;
+}
+.paginate_button:hover , .paginate_button:active {
+  background: rgba(0, 0, 0, 0) !important;
+  border: 1px solid rgba(0, 0, 0, 0) !important;
+  box-shadow: none !important;
+}
+
+/* Filtro Agentes */
+#agentesObligados.dropdown-toggle::after {
+  margin-left: 91%;
+}
+.filtro-fila {
+  display: flex;
+}
+.filter-option {
+  overflow: visible !important;
+}
+.btn-light {
+  background-color: white;
+  border: 1px solid #ced4da;
+}
+
+#tableAgentes th {
+  white-space: nowrap;
+}
+
+
+
+/* VOLUNTARIOS */
+
+/* Bloques Fechas */
+.bloque-fechas {
+  padding: 2% 2%;
+  border-radius: 10px;
+  background-color: #f3f3f3; /* Gris de fondo */
+  max-height: 200px;
+}
+
+/* Subtitulos Fechas Personas y Agentes Obligados */
+.subtitulo-fechas {
+  font-size: 18px;
+  font-weight: bold;
+}
+.subtitulo {
+  font-size: 24px;
+  font-weight: bold;
+}
+.subtitulo-agentes {
+  margin-bottom: 3%;
+}
+/* Tabla Voluntarios */
+#tableVoluntarios .table-header th {
+  font-weight: bold !important;
+}
+#tableVoluntarios {
+  width: 100% !important;
+}
+#tablaVoluntarios {
+  padding: 0;
+}

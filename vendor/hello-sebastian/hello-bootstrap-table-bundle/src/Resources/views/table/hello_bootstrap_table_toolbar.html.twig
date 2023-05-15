@@ -1,0 +1,18 @@
+<div
+     style="float:left; padding-top: 6px;">
+    <form id="bulk_form_{{ table.tableName }}" method="post" action="{{ table.tableOptions.bulkUrl }}">
+        <select name="bulk_action"
+                class="{{ table.tableOptions.bulkActionSelectClassNames }}"
+                style="width: auto; display: inline-block; vertical-align: middle; margin-right: 5px;">
+            {% for value, name in table.tableOptions.bulkActions %}
+                <option value="{{ value }}">{{ name }}</option>
+            {% endfor %}
+        </select>
+        <input type="hidden" name="selected_ids"/>
+        <button type="submit"
+                class="{{ table.tableOptions.bulkButtonClassNames }}"
+                style="display: inline-block; vertical-align: middle;">
+            {{ table.tableOptions.bulkButtonName }}
+        </button>
+    </form>
+</div>

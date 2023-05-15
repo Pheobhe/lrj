@@ -1,0 +1,63 @@
+<ul class="nav nav-pills flex-column ml-0">
+
+{% set ruta  =app.request.attributes.get('_route') %}
+
+{% if is_granted('ROLE_USER') %}
+	{# Cumplimiento #}
+	<li class="nav-item">
+		<a 	class="nav-link item-fondo {% if ruta == 'subject_obligation' or ruta == 'volunteer' %}activo{% endif %}" 
+				data-toggle="collapse" 
+				href="#lista-cumplimiento" 
+				aria-expanded="false" aria-controls="lista-cumplimiento">
+			<i class="material-icons d-lg-inline-block d-md-inline-block d-sm-none d-none">
+				file_copy
+			</i>
+			Cumplimiento de Presentación
+		</a>
+		<ul id="lista-cumplimiento" class="nav ml-3 collapse">
+			{# Obligados #}
+			<li class="nav-item">
+				<a 	id="link-obligados" 
+						class="nav-link {% if app.request.attributes.get('_route') == 'subject_obligation' %}activo{% endif %}" 
+						href="{{path('subject_obligation')}}">
+					<i class="material-icons">keyboard_arrow_right</i> 
+					Obligados
+				</a>
+			</li>
+			{# Voluntarios #}
+			<li class="nav-item">
+				<a 	id="link-voluntarios" 
+						class="nav-link {% if app.request.attributes.get('_route') == 'volunteer' %}activo{% endif %}" 
+						href="{{path('volunteer')}}">
+					<i class="material-icons">keyboard_arrow_right</i> 
+					Voluntarios
+				</a>
+			</li>
+		</ul>
+	</li>
+
+{% endif %}
+
+{% if is_granted('ROLE_ADMIN') %}
+	{# Administrar Usuarios #}
+	<li class="nav-item">
+		<a 	class="nav-link item-fondo {% if ruta == 'user_admin'  %} activo {% endif %}" 
+				href="{{path('user_admin')}}">
+			<i class="fas fa-users"></i>
+			Administrar Usuarios
+		</a>
+	</li>
+{% endif %}
+
+{% if is_granted('ROLE_USER') %}
+	{# Administrar Usuarios #}
+	<li class="nav-item">
+		<a 	class="nav-link item-fondo {% if ruta == 'user'  %} activo {% endif %}" 
+				href="{{path('user')}}">
+			<i class="fas fa-users"></i>
+			Usuarios
+		</a>
+	</li>
+{% endif %}
+
+</ul>

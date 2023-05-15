@@ -1,0 +1,42 @@
+{% block admin %}
+
+<li class="nav-item">
+    <a href="{{path('user_index')}}" class="nav-link ">
+    <span class="pcoded-micon">
+    <i class="feather icon-users"></i></span><span class="pcoded-mtext">Usuarios </span></a></li>
+
+
+<li class="nav-item pcoded-hasmenu">
+    <a href="#!" class="nav-link "><span class="pcoded-micon"><i class="feather icon-tool"></i>
+    </span><span
+            class="pcoded-mtext">Configuración General</span></a>
+    <ul class="pcoded-submenu">
+        <li><a href="{{path('app_persona_index')}}">Personas</a></li>
+        <li><a href="{{path('app_pago_index')}}">Pagos</a></li>
+        <li><a href="{{path('app_actividad_index')}}">Actividades</a></li>
+        {# <li><a href="{{path('app_periodo_index')}}">Períodos</a></li> #}
+         
+    </ul>
+</li>
+
+{# <li class="nav-item pcoded-hasmenu">
+    <a href="#!" class="nav-link "><span class="pcoded-micon"><i class="feather icon-layers"></i>
+    </span><span
+            class="pcoded-mtext">Configuración de Preguntas</span></a>
+    <ul class="pcoded-submenu">
+        <li><a href="{{path('app_pregunta_index')}}">Preguntas</a></li>
+        <li><a href="{{path('app_opcion_index')}}">Opcion</a></li>
+        
+           </ul>
+</li> #}
+
+ {# <li class="nav-item">
+    <a href="{{path('app_respuesta_index')}}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file"></i></span><span
+            class="pcoded-mtext">Respuestas</span></a>
+            
+</li> #}
+<li class="nav-item">
+    <a href="{{path('app_carga_index')}}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-edit"></i></span><span
+            class="pcoded-mtext">Realizar Carga</span></a>
+</li>
+ {% endblock %} 

@@ -1,0 +1,23 @@
+{% if table.tableOptions.enableCheckbox %}
+    {% include "@HelloBootstrapTable/table/hello_bootstrap_table_toolbar.html.twig" %}
+{% endif %}
+
+<table
+        class="hello-bootstrap-table"
+        data-side-pagination="server"
+
+        data-classes="{{ table.tableOptions.tableClassNames }}"
+        data-columns="{{ table.columns|json_encode }}"
+        data-url="{{ table.callbackUrl }}"
+        data-bulk-identifier="{{ table.tableOptions.bulkIdentifier }}"
+
+        {% for key, value in table.tableDataset %}
+            {% if value is iterable %}
+                data-{{ key }}="{{ value|json_encode }}"
+            {% elseif value is same as(true) or value is same as(false) %}
+                data-{{ key }}="{{ value|json_encode }}"
+            {% else %}
+                data-{{ key }}="{{ value }}"
+            {% endif %}
+        {% endfor %}
+></table>

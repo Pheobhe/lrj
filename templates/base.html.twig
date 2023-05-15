@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>La Receta Justa</title>
+    <!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 11]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Meta -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="Ministerio de Gobierno" />
+    <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}" />
+    {% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/plugins/prism-coy.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/icofont/icofont.css') }}">
+    <!-- data tables css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/plugins/dataTables.bootstrap4.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/plugins/PNotifyBrightTheme.css') }}" />
+    <!-- file upload -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/js/jquery.filer/css/jquery.filer.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('assets/js/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css') }}">
+    {% endblock %}
+
+
+</head>
+
+<body>
+    <!-- [ Pre-loader ] start -->
+    <div class="loader-bg">
+        <div class="loader-track">
+            <div class="loader-fill"></div>
+        </div>
+    </div>
+    <nav class="pcoded-navbar theme-horizontal menu-light brand-blue">
+        <div class="navbar-wrapper">
+            <div class="navbar-content sidenav-horizontal" id="layout-sidenav">
+                <ul class="nav pcoded-inner-navbar sidenav-inner">
+                    {{ include('layout/menu.html.twig')}}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- [ navigation menu ] end -->
+
+    <!-- [ Header ] start -->
+    <header class="navbar pcoded-header navbar-expand-lg header-blue navbar-light">
+        <div class="m-header">
+            <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+            <a href="#!" class="b-brand">
+                <img src="{{ asset('images/lrj.png') }}" alt="" class="logo">
+            </a>
+            <a href="#!" class="mob-toggler">
+                <i class="feather icon-more-vertical"></i>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a href="#!" class="full-screen" onclick="javascript:toggleFullScreen()"><i
+                            class="feather icon-maximize"></i></a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li>
+                
+                <li>
+                    <div class="dropdown drp-user">
+                        <a href="#!" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="{{ asset('images/user.png') }}" class="img-radius wid-40"
+                                alt="User-Profile-Image">
+
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right profile-notification">
+                            <div class="pro-head">
+                                <img src="{{ asset('images/user.png') }}" class="img-radius" alt="User-Profile-Image">
+                                <a href="{{ path('app_logout') }}" class="dud-logout" title="Logout">
+                                    <i class="feather icon-log-out"></i>
+                                </a>
+                            </div>
+                            <span class="role">{{app.user.username}} ({{app.user.getStringRole}})</span>
+                            <ul class="pro-body">
+                                <li>
+                                    <a href="{{ path('user_profile') }}" class="dropdown-item">
+                                        <i class="feather icon-user"></i> Mis Datos 
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('app_logout') }}" class="dropdown-item">
+                                        <i class="feather icon-log-out"></i> Cerrar sesión 
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <section class="pcoded-main-container">
+        <div class="pcoded-content">
+        {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% for message in app.flashes('danger') %}
+            <div class="alert alert-danger">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                {{ message }}
+            </div>
+        {% endfor %}
+            {% block headerPage %}
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-sm-12">
+                            <div class="page-header-title">
+
+                                <h5 class="m-b-10"> {% block headerTitle %}{% endblock %}</h5>
+                            </div>
+                            <ul class="breadcrumb">
+                                {% block headerBreadcrumb %}
+                                <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a>
+                                </li>
+                                <li class="breadcrumb-item"><a href="#"></a></li>
+                                {% endblock %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endblock %}
+            <div class="row">
+                {% block content %}
+                <div class="col-sm-12">
+                    {% block body %}
+                    {% endblock %}
+                </div>
+                {% endblock content %}
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="mt-auto text-center text-dark" style="background-color: #f1f1f1;">
+        {# <div class="pt-4"> #}
+            {# <li class="list-inline-item">
+                <h7 class="mb-1">Si tenes algun problema en el sitio te solicitamos que ingreses a
+                    soporte.mjus.gba.gob.ar con tu usuario y pass del mail institucional y generes un tiquet informando
+                    la problematica</h7>
+            </li> <br><br /> #}
+            <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                © 2022 Desarrollado por:
+                <a class="text-dark">Defalco Lorena</a>
+            </div>
+        {# </div>     #}
+    </footer>
+
+
+    {% block javascripts %}
+
+
+    <script src="{{ asset('assets/js/vendor-all.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/pcoded.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/prism.js') }}"></script>
+    <script src="{{ asset('assets/js/horizontal-menu.js') }}"></script>
+    <!-- datatable Js -->
+    <script src="{{ asset('assets/js/plugins/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/data-basic-custom.js') }}"></script>
+    <!-- pnotify Js -->
+    <script src="{{ asset('assets/js/plugins/PNotify.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/PNotifyButtons.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/PNotifyCallbacks.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/PNotifyDesktop.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/PNotifyConfirm.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/notify-event.js') }}"></script>
+    {#file upload#}
+    <script src="{{ asset('assets/js/jquery.filer/js/jquery.filer.min.js') }}"></script>
+    <script src="{{ asset('assets/js/filer/custom-filer.js') }}"></script>
+    <script src="{{ asset('assets/js/filer/jquery.fileuploads.init.js') }}"></script>
+    <script>
+        (function () {
+            if ($('#layout-sidenav').hasClass('sidenav-horizontal') || window.layoutHelpers.isSmallScreen()) {
+                return;
+            }
+            try {
+                window.layoutHelpers._getSetting("Rtl")
+                window.layoutHelpers.setCollapsed(
+                    localStorage.getItem('layoutCollapsed') === 'true',
+                    false
+                );
+            } catch (e) {}
+        })();
+        $(function () {
+            $('#layout-sidenav').each(function () {
+                new SideNav(this, {
+                    orientation: $(this).hasClass('sidenav-horizontal') ? 'horizontal' :
+                        'vertical'
+                });
+            });
+            $('body').on('click', '.layout-sidenav-toggle', function (e) {
+                e.preventDefault();
+                window.layoutHelpers.toggleCollapsed();
+                if (!window.layoutHelpers.isSmallScreen()) {
+                    try {
+                        localStorage.setItem('layoutCollapsed', String(window.layoutHelpers
+                        .isCollapsed()));
+                    } catch (e) {}
+                }
+            });
+        });
+        $(document).ready(function () {
+            $("#pcoded").pcodedmenu({
+                themelayout: 'horizontal',
+                MenuTrigger: 'hover',
+                SubMenuTrigger: 'hover',
+            });
+        });
+        $('.animation-toggle').hover(function () {
+            var anim = $(this).attr('data-animate');
+            $(this).addClass('animated');
+            $(this).addClass(anim);
+            if (flag) {
+                $('html, body').animate({
+                    scrollTop: '600px'
+                }, 800);
+                flag = false;
+            }
+        });
+
+    </script>
+    {% endblock %}
+</body>
+
+</html>

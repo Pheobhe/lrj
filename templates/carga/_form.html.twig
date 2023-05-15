@@ -1,0 +1,13 @@
+{{ form_start(form) }}
+     {{ form_widget(form) }} 
+
+<div class="form-group col-md-12 my -2">
+    <div class="row">
+        {{ form_label (form.pago) }}
+        {{ form_widget(form.pago, {'attr':{'class':'col-md-4 '}}) }}
+    </div>
+</div>
+
+<button class="btn btn-outline-primary">{{ button_label|default('Siguiente') }}</button>
+{{ form_end(form) }}
+

@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}
+{% endblock %}
+
+
+{% block headerTitle %}
+	Carga de {{persona.nombre}}
+{% endblock headerTitle %}
+
+{% block headerBreadcrumb %}
+	<li class="breadcrumb-item">
+		<a href='{{ path('index') }}'>
+			<i class="feather icon-home"></i>
+		</a>
+	</li>
+	<li class="breadcrumb-item">
+		<a>Carga</a>
+	</li>
+	<li class="breadcrumb-item">
+		<a>Pago {{pago.nombre}}</a>
+	</li>
+{% endblock headerBreadcrumb %}
+
+{% block body %}
+
+  
+	<div class="col-sm-12">
+
+		<div class="card">
+			<div class="card-body">
+				<div class="row">
+						<div class="tab">
+						{% for actividadTmp in actividades %}
+  							<a class="tablinks {% if actividadTmp.id == actividad.id %}active{% endif %}" href="{{ path('app_carga_items', {pago: pago.id, pago: pago.id, actividad:actividadTmp.id}) }}">{{actividadTmp.nombre}}</a>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="row">
+					<div class="tab">
+						{% for lugarTmp in pagos %}
+							<a class="tablinks {% if lugarTmp.id == pago.id %}active{% endif %}" href="{{ path('app_carga_items', {pago: pago.id, pago: lugarTmp.id, actividad:actividad.id}) }}">{{lugarTmp.nombre}}</a>
+						{% endfor %}
+					</div>		
+				</div>
+				<div class="row contentResponses">
+					<div class="">
+						<div class="form-group">
+							<div class="vtab">
+								{% for preguntaTmp in preguntas %}
+									<a class="{% if preguntaTmp.id == pregunta.id %}active{% endif %}" href="{{ path('app_carga_items', {pago: pago.id, pago: pago.id, actividad:actividad.id, pregunta: preguntaTmp.id}) }}">{{preguntaTmp.nombre}}</a>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+					<div class="">
+						<div class="input-group input-group-sm vtabcontent" >
+	
+						<div class="card-header text-center">
+						{% if form.children|length > 2 %}
+							{{ form(form) }}
+						{% endif %}
+						
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div>
+				<a class="mb-4 btn btn-outline-primary" style="float: right" href="{{ path('app_carga_index') }}">Cambiar Período</a>
+			</div>
+
+		</div>
+
+	{% endblock %}
+
+	{% block javascripts %}
+		{{ parent() }}
+		<script>
+		
+		</script>
+
+	{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+	{{ hello_bootstrap_table_css() }}
+{% endblock %}
+

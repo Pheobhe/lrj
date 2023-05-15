@@ -1,0 +1,66 @@
+/* INICIO Mis Datos y Agregat/Editar Usuario */
+.btn-descargar {
+  text-align: center;
+  background-color: #929292;
+  border-color: #929292;
+}
+
+.bloque-contra {
+	background-color: #f3f3f3;
+	padding: 1% 1%;
+	border-radius: 10px;
+}
+
+ /* DNI sin flechas de numero */
+ input[type=number]::-webkit-inner-spin-button, 
+ input[type=number]::-webkit-outer-spin-button { 
+	 -webkit-appearance: none; 
+	 margin: 0; 
+ }
+/* FIN Mis Datos */
+
+
+/* INICIO User Admin Dashboard */
+
+.table thead th {
+	font-weight: bold;
+}
+
+.table tbody td, .table tbody th {
+	vertical-align: middle;
+}
+
+.btn-editar {
+	color: white;
+	border-radius: 50%;
+	background-color: #545454;
+	padding: 10px;
+	font-size: 16px !important;
+}
+
+.btn-editar:hover{
+	color: #545454;
+	background-color: white;
+}
+
+.btn-hab-des {
+	color:black;
+	border-radius: 50%;
+	background-color: #00b1c7;
+	padding: 10px;
+	font-size: 16px !important;
+}
+
+.btn-deshabilitar {
+	width: 35px;
+	text-align: center;
+}
+
+.btn-hab-des:hover{
+	color: #00b1c7;
+	background-color: black;
+}
+
+
+/* FIN User Admin Dashboard */
+

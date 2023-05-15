@@ -1,0 +1,23 @@
+{{ form_start(form) }}
+
+<div class="form-group col-md-12 my -2">
+	<div class="row">
+
+		{{ form_label (form.nombre, 'Nombre') }}
+		{{ form_widget(form.nombre) }}
+
+		{{ form_label (form.actividades, 'Actividad') }}
+		{{ form_widget(form.actividades) }}
+
+		{{ form_label (form.pagos, 'Pago') }}
+		{{ form_widget(form.pagos) }}
+
+		{{ form_label (form.preguntas, 'Pregunta') }}
+		{{ form_widget(form.preguntas) }}
+
+		{{ form_widget(form.created_at, {'attr': {'hidden': 'true',}}) }}
+
+	</div>
+</div>
+<button class="btn btn-outline-primary">{{ button_label|default('Guardar') }}</button>
+{{ form_end(form) }}

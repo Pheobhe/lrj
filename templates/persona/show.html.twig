@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block headerBreadcrumb %}
+	<li class="breadcrumb-item">
+		<a href='{{ path('index') }}'>
+			<i class="feather icon-home"></i>
+		</a>
+	</li>
+	<li class="breadcrumb-item">
+		<a>Personas</a>
+	</li>
+{% endblock headerBreadcrumb %}
+
+{% block body %}
+	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+		<a class="mb-2 btn btn-outline-primary" style="float: right" href="{{ path('app_persona_index') }}">Volver</a>
+	</div>
+	<div class="card">
+		<div class="card-body">
+			<h5>Ver Persona</h5>
+			<br/>
+			<table class="table">
+				<tbody>
+					<tr>
+						<th>Identificador</th>
+						<td>{{ persona.id_per }}</td>
+					</tr>
+					<tr>
+						<th>Nombre</th>
+						<td>{{ persona.nombre }}</td>
+					</tr>
+					<tr>
+						<th>Creación</th>
+						<td>{{ persona.createdAt ? persona.createdAt|date('d-m-Y') : '' }}</td>
+					</tr>
+				</tbody>
+			</table>
+			<br/>
+			{# {% if respuesta.user == app.user or is_granted('ROLE_SUPER_ADMIN') %} #}
+			<a class="btn btn-outline-primary" href="{{ path('app_persona_edit', {'id': persona.id}) }}">Editar</a>
+			{% if is_granted('ROLE_SUPER_ADMIN') %}
+				<a style="float: right">
+					{{ include('persona/_delete_form.html.twig') }}
+				</a>
+			{% endif %}
+
+			{# {% endif %} #}
+		</div>
+	</div>
+
+
+{% endblock %}

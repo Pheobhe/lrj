@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	{{parent()}}
+{% endblock %}
+
+{% block headerBreadcrumb %}
+	<li class="breadcrumb-item">
+		<a href='{{ path('index') }}'>
+			<i class="feather icon-home"></i>
+		</a>
+	</li>
+	<li class="breadcrumb-item">
+		<a>Pagos</a>
+	</li>
+{% endblock headerBreadcrumb %}
+
+{% block body %}
+
+	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+		<a class="mb-4 btn btn-outline-primary" style="float: right" href="{{ path('app_lugar_index') }}">Volver
+		</a>
+	</div>
+
+	<div class="card">
+
+		<div class="card-body d-flex align-items-center justify-content-between">
+			<h5 class="mb-0">Ver y Editar Pago</h5>
+			<button type="button" class="btn btn-icon btn-outline-warning" data-toggle="collapse" data-target=".pro-dont-edit" aria-expanded="true" aria-controls="pro-dont-edit-1 pro-dont-edit-2" id="btnEdit">
+				<i class="feather icon-edit-2"></i>
+			</button>
+		</div>
+		<div class="card-body border-top pro-dont-edit collapse show" id="pro-dont-edit-1">
+			<div class="form-group row">
+				<label class="col-sm-3 col-form-label font-weight-bolder">Id</label>
+				<div class="col-sm-9">
+					{{ pago.id }}
+				</div>
+
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-3 col-form-label font-weight-bolder">Nombre</label>
+				<div class="col-sm-9">
+					{{ pago.nombre }}
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-3 col-form-label font-weight-bolder">Fecha de Creación</label>
+				<div class="col-sm-9">
+					{{pago.createdAt ? pago.createdAt|date('d-m-Y') : ''}}
+				</div>
+			</div>
+		</div>
+
+		<div class="card-body border-top pro-dont-edit collapse" id="pro-dont-edit-2">
+			{{ include('pago/_form.html.twig', {'button_label': 'Actualizar'}) }}
+			<a style="float: right">{{ include('pago/_delete_form.html.twig', {'button_label': 'Eliminar' }) }}</a>
+
+		</div>
+	</div>
+
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+	<style>
+		span.select2-container {
+			width: 100% !important;
+		}
+	</style>
+{% endblock %}
+
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+	<script>
+		$(document).ready(function () {
+$('.select2').select2();{% if not form.vars.valid %}$('#btnEdit').click();{% endif %}
+});
+	</script>
+{% endblock %}

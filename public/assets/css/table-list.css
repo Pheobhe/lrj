@@ -1,0 +1,84 @@
+.table-list {
+    background: 0 0;
+    box-shadow: none
+}
+
+.table-list:hover {
+    box-shadow: none
+}
+
+.table-list table {
+    border-spacing: 0 10px;
+    width: calc(100% - 10px);
+    margin: 0 5px;
+    border-collapse: separate
+}
+
+.table-list table tbody tr {
+    box-shadow: 0 1px 2.94px .06px rgba(4, 26, 55, .16);
+    border-radius: 5px;
+    position: relative
+}
+
+.table-list table tbody tr .overlay-edit {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: 0;
+    background: #4099ff;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.table-list table tbody tr .overlay-edit .btn {
+    border-radius: 50%;
+    margin: 0 3px;
+    width: 35px;
+    height: 35px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center
+}
+
+.table-list table tbody tr:hover {
+    box-shadow: 0 0 6px 0 #4099ff
+}
+
+.table-list table tbody tr:hover td {
+    cursor: pointer;
+    color: #fff;
+    background: #4099ff
+}
+
+.table-list table tbody tr:hover td h6,
+.table-list table tbody tr:hover td .h6 {
+    color: #fff
+}
+
+.table-list table tbody tr:hover td .overlay-edit {
+    opacity: 1
+}
+
+.table-list table tr td,
+.table-list table tr th {
+    vertical-align: middle;
+    border: none
+}
+
+.table-list table tr td {
+    background: #fff;
+    position: relative
+}
+
+.table-list table tr td:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px
+}
+
+.table-list table tr td:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px
+}

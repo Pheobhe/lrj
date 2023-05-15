@@ -1,0 +1,70 @@
+version: '3.6'
+services:
+    php:
+        build:
+            context: .
+            dockerfile: docker/Dockerfile.php
+            args:
+                APP_ENV: dev
+                COMPOSER_NO_DEV: 0
+        depends_on:
+        - database      
+        env_file:
+        - .env
+        volumes:
+        # - ./:/srv/symfony/:rw
+        - ./config:/srv/symfony/config:rw
+        - ./public:/srv/symfony/public:rw
+        - ./tests:/srv/symfony/tests:rw
+        - ./migrations:/srv/symfony/migrations:rw
+        - ./templates:/srv/symfony/templates:rw
+        - ./src:/srv/symfony/src:rw
+        
+    nginx:
+        build:
+            context: .
+            dockerfile: docker/Dockerfile.nginx
+        depends_on:
+        - php
+        environment:
+            VIRTUAL_HOST: localhost
+        ports:
+            - "8009:80"
+        volumes:
+            - ./public:/srv/symfony/public:rw
+            # - symfony-media:/srv/symfony/web/media:ro,nocopy
+            #     - symfony-asset:/srv/symfony/web/build:ro,nocopy
+
+    database:
+        image: mysql:5.7
+        environment:
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=lrj
+        - MYSQL_USER=user
+        - MYSQL_PASSWORD=pass
+        volumes:
+        - symfony-db:/var/lib/mysql:rw,delegated
+        - ./bases/lrj.sql:/docker-entrypoint-initdb.d/dump.sql
+        healthcheck:
+            test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-uroot", "-proot"]
+            timeout: 20s
+            retries: 10
+        # ports:
+        #     - '3305:3306'
+
+    phpmyadmin:
+        image: phpmyadmin
+        restart: always
+        depends_on:
+            - database
+        ports:
+            - 8080:80
+        environment:
+            - PMA_ARBITRARY=1
+            - PMA_HOST=database
+            - PMA_USER=user
+            - PMA_PASSWORD=pass
+            - MYSQL_ROOT_PASSWORD=root
+
+volumes:
+  symfony-db:
